@@ -1,10 +1,12 @@
 import projects from "../data/projects";
 import { useState } from "react";
+import ProjectModal from "../components/ProjectModal";
 
 export default function Projects() {
   const [filter, setFilter] = useState("All");
   const allTags = ["All", ...new Set(projects.flatMap((p) => p.tags))];
   const visible = filter === "All" ? projects : projects.filter((p) => p.tags.includes(filter));
+  const [selected, setSelected] = useState(null)
 
   return (
     <section className="max-w-5xl mx-auto px-6 py-12">
@@ -22,7 +24,7 @@ export default function Projects() {
       </div>
       <div className="grid md:grid-cols-2 gap-6">
         {visible.map((project) => (
-          <div key={project.slug}
+          <div key={project.slug} onClick={() => setSelected(project)}
             className="border border-white/5 rounded-xl overflow-hidden hover:-translate-y-1 transition-transform">
             <img src={project.images[0]} alt={project.title}
               className="w-full h-48 object-contain bg-gray-900 p-4" />
@@ -41,6 +43,7 @@ export default function Projects() {
           </div>
         ))}
       </div>
+      <ProjectModal project={selected} onClose={() => setSelected(null)} />
     </section>
   );
 }

@@ -1,12 +1,15 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import projects from "../data/projects";
 import posts from "../data/posts";
+import ProjectModal from "../components/ProjectModal";
 
 export default function Home() {
+  const [selected, setSelected] = useState(null)
   return (
     <>
       {/* Hero */}
-      <section className="max-w-3xl mx-auto px-6 py-24">
+      <section className="max-w-5xl mx-auto px-6 py-24">
         <p className="text-sm uppercase tracking-widest text-amber-400 mb-2">
           Student Developer & Designer at Northeastern University
         </p>
@@ -33,7 +36,7 @@ export default function Home() {
         <h2 className="text-2xl font-bold mb-6">Featured Work</h2>
         <div className="grid md:grid-cols-2 gap-6">
           {projects.filter((project) => project.featured).map((project) => (
-            <div key={project.slug}
+            <div key={project.slug} onClick={() => setSelected(project)}
               className="border border-white/5 rounded-xl overflow-hidden hover:-translate-y-1 transition-transform">
               <img src={project.images[0]} alt={project.title} className="w-full h-48 object-contain bg-gray-900 p-4" />
               <div className="p-5">
@@ -43,6 +46,7 @@ export default function Home() {
             </div>
           ))}
         </div>
+        <ProjectModal project={selected} onClose={() => setSelected(null)} />
       </section>
 
       {/* Featured Posts */}

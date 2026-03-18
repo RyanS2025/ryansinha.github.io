@@ -1,17 +1,22 @@
 import { useForm, ValidationError } from "@formspree/react";
+import { useEffect, useRef } from "react";
 
 export default function Contact() {
+  const formRef = useRef();
   const [state, handleSubmit] = useForm("meervdlq");
+
+  useEffect(() => {
+    if (state.succeeded && formRef.current) {
+      formRef.current.reset();
+    }
+  }, [state.succeeded]);
 
   return (
     <section className="max-w-5xl mx-auto px-6 py-12">
       <h1 className="text-3xl font-bold mb-2">Contact Me</h1>
       <p className="text-gray-400 mb-8">Everything you need to reach out to me.</p>
 
-      {state.succeeded ? (
-        <p className="text-amber-400 text-lg">Message sent! I'll get back to you soon.</p>
-      ) : (
-        <form className="max-w-xl" onSubmit={handleSubmit}>
+        <form ref={formRef} className="max-w-xl" onSubmit={handleSubmit}>
           <div className="flex flex-col gap-4">
             <div>
               <label className="text-sm text-gray-400 mb-1 block">Name</label>
@@ -49,9 +54,10 @@ export default function Contact() {
               className="self-start w-40 py-3 rounded-lg font-medium transition-colors bg-amber-400 text-gray-950 hover:bg-amber-300 disabled:opacity-50">
               {state.submitting ? "Sending..." : "Send message"}
             </button>
+
+            {state.succeeded && (<p className="text-amber-400 text-sm mt-2"> Message sent! I'll get back to you soon.</p>)}
           </div>
         </form>
-      )}
     </section>
   );
 }
