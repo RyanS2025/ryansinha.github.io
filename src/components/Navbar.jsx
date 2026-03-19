@@ -40,7 +40,7 @@ export default function Navbar() {
           <a href="https://github.com/RyanS2025" target="_blank" rel="noopener noreferrer">
             <FaGithub className="text-lg text-gray-400 hover:text-white transition-colors" />
           </a>
-          <a href="https://linkedin.com/in/yourlinkedin" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.linkedin.com/in/ryan-sinha-306986387/" target="_blank" rel="noopener noreferrer">
             <FaLinkedin className="text-lg text-gray-400 hover:text-white transition-colors" />
           </a>
         </div>
