@@ -1,49 +1,67 @@
 import projects from "../data/projects";
 import { useState } from "react";
 import ProjectModal from "../components/ProjectModal";
+import StarField from "../components/StarField";
 
 export default function Projects() {
   const [filter, setFilter] = useState("All");
   const allTags = ["All", ...new Set(projects.flatMap((p) => p.tags))];
   const visible = filter === "All" ? projects : projects.filter((p) => p.tags.includes(filter));
-  const [selected, setSelected] = useState(null)
+  const [selected, setSelected] = useState(null);
 
   return (
-    <section className="max-w-5xl mx-auto px-6 py-12">
-      <h1 className="text-3xl font-bold mb-2">Projects</h1>
-      <p className="text-gray-400 mb-8">Things I've built and shipped.</p>
-      <div className="flex gap-2 mb-6 flex-wrap">
-        {allTags.map((tag) => (
-          <button key={tag} onClick={() => setFilter(tag)} className={`text-sm px-3 py-1 rounded-full border transition-colors 
-          ${filter === tag
-          ? "bg-amber-400 text-gray-950 border-amber-400"
-          : "border-white/10 text-gray-400 hover:text-white"}`}>
-        {tag}
-      </button>
-        ))}
-      </div>
-      <div className="grid md:grid-cols-2 gap-6">
-        {visible.map((project) => (
-          <div key={project.slug} onClick={() => setSelected(project)}
-            className="border border-white/5 rounded-xl overflow-hidden hover:-translate-y-1 transition-transform">
-            <img src={project.images[0]} alt={project.title}
-              className="w-full h-48 object-contain bg-gray-900 p-4" />
-            <div className="p-5">
-              <div className="flex gap-2 mb-2">
-                {project.tags.map((tag) => (
-                  <span key={tag}
-                    className="text-xs bg-white/10 px-2 py-1 rounded-full">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-              <h3 className="font-semibold text-lg">{project.title}</h3>
-              <p className="text-sm text-gray-400 mt-1">{project.description}</p>
-            </div>
+    <>
+      {/* Hero */}
+      <section className="relative overflow-hidden -mt-16">
+        <img src="/images/HeroBackdrop.png" alt="" className="absolute inset-0 w-full h-full object-cover opacity-50" />
+        <div className="absolute bottom-0 left-0 w-full h-40 bg-gradient-to-t from-gray-950 to-transparent" />
+        <div className="max-w-5xl mx-auto px-6 pt-32 pb-20 relative">
+          <h1 className="text-3xl font-bold mb-2">Projects<span className="text-amber-400">.</span></h1>
+          <p className="text-gray-400">Things I've built and shipped.</p>
+        </div>
+      </section>
+
+      {/* Stars behind content */}
+      <div className="relative">
+        <StarField />
+
+        <section className="relative z-10 max-w-5xl mx-auto px-6 py-12">
+          {/* Filter tags */}
+          <div className="flex gap-2 mb-6 flex-wrap">
+            {allTags.map((tag) => (
+              <button key={tag} onClick={() => setFilter(tag)}
+                className={`text-sm px-3 py-1 rounded-full border transition-colors
+                  ${filter === tag
+                    ? "bg-amber-400 text-gray-950 border-amber-400"
+                    : "border-white/10 text-gray-400 hover:text-white"}`}>
+                {tag}
+              </button>
+            ))}
           </div>
-        ))}
+
+          {/* Project grid */}
+          <div className="grid md:grid-cols-2 gap-6">
+            {visible.map((project) => (
+              <div key={project.slug} onClick={() => setSelected(project)}
+                className="cursor-pointer bg-gray-900 border border-white/10 rounded-xl overflow-hidden hover:-translate-y-1 hover:shadow-lg hover:shadow-amber-400/10 transition-all">
+                <img src={project.images[0]} alt={project.title}
+                  className="w-full h-48 object-contain bg-gray-800 p-4" />
+                <div className="p-5">
+                  <div className="flex gap-2 mb-2">
+                    {project.tags.map((tag) => (
+                      <span key={tag} className="text-xs bg-gray-800 px-2 py-1 rounded-full">{tag}</span>
+                    ))}
+                  </div>
+                  <h3 className="font-semibold text-lg">{project.title}</h3>
+                  <p className="text-sm text-gray-400 mt-1">{project.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <ProjectModal project={selected} onClose={() => setSelected(null)} />
+        </section>
       </div>
-      <ProjectModal project={selected} onClose={() => setSelected(null)} />
-    </section>
+    </>
   );
 }

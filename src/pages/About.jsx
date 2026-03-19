@@ -1,3 +1,5 @@
+import StarField from "../components/StarField";
+
 export default function About() {
   const skills = ["JavaScript", "React", "Python", "HTML/CSS", "Tailwind", "Git", "SQL", "Supabase", "Node.js", "Java", "C++", "VS Code", "GitHub", "Vite", "Team Leadership", "Event Planning", "Public Speaking"];
 
@@ -32,7 +34,7 @@ export default function About() {
             />
             {/* Bio */}
             <div>
-              <h1 className="text-3xl font-bold mb-4">About Me</h1>
+              <h1 className="text-3xl font-bold mb-4">About Me<span className="text-amber-400">.</span></h1>
               <p className="text-gray-400 leading-relaxed">
                 I'm Ryan, a first-year Computer Science and Business Administration student at Northeastern University.
                 Originally from West Orange, New Jersey, I'm passionate about web development and love building tools that make people's lives easier.
@@ -43,60 +45,63 @@ export default function About() {
         </section>
       </section>
 
-      <section className="max-w-5xl mx-auto px-6">
-        <div className="flex items-center justify-between border-b border-amber-400 pb-2">
-          {/* Resume */}
-          <h2 className="text-3xl font-bold">Resume</h2>
-          <a
-            href="/RyanSinhaResumeWebsite.png"
-            target="_blank"
-            className="text-md text-amber-400 hover:text-amber-300 transition-colors"
-          >
-            Download Resume →
-          </a>
-        </div>
+      <div className="relative">
+        <StarField />
+        <section className="max-w-5xl mx-auto px-6">
+          <div className="flex items-center justify-between border-b border-amber-400 pb-2">
+            {/* Resume */}
+            <h2 className="text-3xl font-bold">Resume</h2>
+            <a
+              href="/RyanSinhaResumeWebsite.png"
+              target="_blank"
+              className="text-md text-amber-400 hover:text-amber-300 transition-colors"
+            >
+              Download Resume →
+            </a>
+          </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
-          <div>
-            {/* Education */}
-            <h3 className="text-xl font-semibold mb-3 mt-3">Education</h3>
-            {education.map((edu) => (
-              <div key={edu.year} className="border-l-2 border-amber-400 pl-4 mb-4">
-                <p className="text-sm text-amber-400">{edu.year}</p>
-                <h4 className="font-semibold">{edu.school}</h4>
-                <p className="text-sm text-gray-400">{edu.degree}</p>
-                <p className="text-sm text-gray-500 mt-1">{edu.note}</p>
+          <div className="grid md:grid-cols-2 gap-8">
+            <div>
+              {/* Education */}
+              <h3 className="text-xl font-semibold mb-3 mt-3">Education</h3>
+              {education.map((edu) => (
+                <div key={edu.year} className="border-l-2 border-amber-400 pl-4 mb-4">
+                  <p className="text-sm text-amber-400">{edu.year}</p>
+                  <h4 className="font-semibold">{edu.school}</h4>
+                  <p className="text-sm text-gray-400">{edu.degree}</p>
+                  <p className="text-sm text-gray-500 mt-1">{edu.note}</p>
+                </div>
+              ))}
+
+              {/* Skills */}
+              <h3 className="text-xl font-semibold mb-3 mt-3">Skills</h3>
+              <div className="flex flex-wrap gap-2">
+                {skills.map((s) => (
+                  <span
+                    key={s}
+                    className="text-sm border border-amber-400 text-amber-400 px-3 py-1.5 rounded-full whitespace-nowrap"
+                  >
+                    {s}
+                  </span>
+                ))}
               </div>
-            ))}
+            </div>
 
-            {/* Skills */}
-            <h3 className="text-xl font-semibold mb-3 mt-3">Skills</h3>
-            <div className="flex flex-wrap gap-2">
-              {skills.map((s) => (
-                <span
-                  key={s}
-                  className="text-sm border border-amber-400 text-amber-400 px-3 py-1.5 rounded-full whitespace-nowrap"
-                >
-                  {s}
-                </span>
+            <div>
+              {/* Experience */}
+              <h3 className="text-xl font-semibold mb-3 mt-3">Experience</h3>
+              {experience.map((exp) => (
+                <div key={exp.year} className="border-l-2 border-amber-400 pl-4 mb-4">
+                  <p className="text-sm text-amber-400">{exp.year}</p>
+                  <h4 className="font-semibold">{exp.company}</h4>
+                  <p className="text-sm text-gray-400">{exp.role}</p>
+                  <p className="text-sm text-gray-500 mt-1">{exp.note}</p>
+                </div>
               ))}
             </div>
           </div>
-
-          <div>
-            {/* Experience */}
-            <h3 className="text-xl font-semibold mb-3 mt-3">Experience</h3>
-            {experience.map((exp) => (
-              <div key={exp.year} className="border-l-2 border-amber-400 pl-4 mb-4">
-                <p className="text-sm text-amber-400">{exp.year}</p>
-                <h4 className="font-semibold">{exp.company}</h4>
-                <p className="text-sm text-gray-400">{exp.role}</p>
-                <p className="text-sm text-gray-500 mt-1">{exp.note}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+        </section>
+      </div>
     </>
   );
 }
