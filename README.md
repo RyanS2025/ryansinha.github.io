@@ -1,16 +1,74 @@
-# React + Vite
+# ryans2025.github.io
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+My personal portfolio website — built with React, Tailwind CSS, and React Router, deployed on GitHub Pages.
 
-Currently, two official plugins are available:
+**Live site:** [ryans2025.github.io](https://ryans2025.github.io)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## About
 
-## React Compiler
+I'm Ryan Sinha, a first-year Computer Science & Business student at Northeastern University. This site showcases my projects, blog posts, and a bit about me.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech Stack
 
-## Expanding the ESLint configuration
+- **React** — component-based UI
+- **Tailwind CSS** — utility-first styling
+- **React Router** — client-side routing
+- **Formspree** — contact form submissions
+- **GitHub Pages** — hosting & deployment
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Pages
+
+| Page | Description |
+|------|-------------|
+| **Home** | Hero section with featured projects and blog posts |
+| **About** | Bio, skills, and background |
+| **Projects** | Filterable grid of project cards with tag chips |
+| **Blog** | Articles and project write-ups |
+| **Contact** | Contact form powered by Formspree |
+
+## Getting Started
+
+```bash
+# Clone the repo
+git clone https://github.com/ryans2025/ryans2025.github.io.git
+cd ryans2025.github.io/my-app
+
+# Install dependencies
+npm install
+
+# Start the dev server
+npm run dev
+```
+
+Open [http://localhost:5173](http://localhost:5173) to view it locally.
+
+## Project Structure
+
+```
+src/
+├── App.jsx              # Router + layout shell
+├── main.jsx             # Entry point
+├── index.css            # Tailwind import
+├── components/
+│   ├── Navbar.jsx       # Sticky nav with mobile menu
+│   └── Footer.jsx       # Social links + copyright
+├── pages/
+│   ├── Home.jsx
+│   ├── About.jsx
+│   ├── Projects.jsx
+│   ├── Blog.jsx
+│   └── Contact.jsx
+└── data/
+    ├── projects.js      # Project content (title, tags, images, etc.)
+    └── posts.js         # Blog post content
+```
+
+## Deployment
+
+The site is deployed to GitHub Pages. To deploy:
+
+```bash
+cd ryans2025.github.io/my-app
+npm run build
+npm run deploy
+```
