@@ -57,7 +57,6 @@ export default function Home() {
             ))}
           </div>
           <Link to="/projects" className="text-amber-400 hover:text-amber-300 transition-colors text-sm mt-4 inline-block">View all projects →</Link>
-          <ProjectModal project={selected} onClose={() => setSelected(null)} />
         </section>
 
         {/* Divider — With Glow */}
@@ -85,6 +84,8 @@ export default function Home() {
           </div>
           <Link to="/blog" className="text-amber-400 hover:text-amber-300 transition-colors text-sm mt-4 inline-block">View all posts →</Link>
         </section>
+
+        <ProjectModal project={selected} onClose={() => setSelected(null)} />
       </div>
     </>
   );

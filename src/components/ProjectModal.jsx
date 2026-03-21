@@ -7,8 +7,8 @@ export default function ProjectModal({ project, onClose }) {
   
     if (!project) return null;
 
-  return (
-    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center" onClick={onClose}>
+    return (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[9999] flex items-center justify-center" onClick={onClose}>
         <div onClick={(e) => e.stopPropagation()} className="bg-gray-900 border border-white/10 rounded-2xl max-w-3xl w-full mx-4 max-h-[85vh] overflow-hidden flex flex-col" style={{ boxShadow: "0 0 80px rgb(251, 191, 35, 0.2)" }}>
 
             {/* Image Carousel */}
