@@ -53,11 +53,20 @@ export default function ProjectModal({ project, onClose }) {
                 {/* Description */}
                 <p className="text-gray-400 mb-6">{project.description}</p>
 
-                {/* Link to repo */}
-                <a href={project.link} target="_blank" rel="noopener noreferrer"
-                    className="px-5 py-2.5 bg-amber-400/10 border border-amber-400/30 text-amber-400 rounded-full hover:bg-amber-400/20 transition-colors text-sm">
-                    View on GitHub →
-                </a>
+                <div className="flex gap-3">
+                    {/* Link to repo */}
+                    <a href={project.link} target="_blank" rel="noopener noreferrer"
+                        className="px-5 py-2.5 bg-amber-400/10 border border-amber-400/30 text-amber-400 rounded-full hover:bg-amber-400/20 transition-colors text-sm">
+                        View on GitHub →
+                    </a>
+                    {/* Link to domain */}
+                    {project.domain && (
+                        <a href={project.domain} target="_blank" rel="noopener noreferrer"
+                            className="px-5 py-2.5 bg-amber-400/10 border border-amber-400/30 text-amber-400 rounded-full hover:bg-amber-400/20 transition-colors text-sm">
+                            View on Website →
+                        </a>
+                    )}
+                </div>
             </div>
         </div>
     </div>

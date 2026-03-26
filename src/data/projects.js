@@ -16,6 +16,7 @@ const projects = [
       "/images/lost-and-hound/LostandHound404.png",
     ],
     link: "https://github.com/RyanS2025/Lost-and-Hound/tree/main",
+    domain: "https://thelostandhound.com",
     featured: true
   },
   { // WNBA Reference
@@ -34,6 +35,7 @@ const projects = [
       "/images/wnba-reference/WNBARefPlayerDetail.png",
     ],
     link: "https://github.com/RyanS2025/WNBA-Reference",
+    domain: null,
     featured: true
   },
   { // Basketball-Sim
@@ -47,6 +49,7 @@ const projects = [
     "/images/NBASim/NBASimAPI.png",
     ],
     link: "https://github.com/RyanS2025/NBA-Season-Simulation",
+    domain: null,
     featured: false
   },
   // Add more...

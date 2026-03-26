@@ -9,7 +9,7 @@ export default function About() {
   ];
 
   const experience = [
-  { year: "2025 – Present", role: "Crew Member", company: "Tropical Smoothie Cafe", note: "Customer service, food prep, POS operations, and daily closing procedures." },
+  { year: "2025 - 2025", role: "Crew Member", company: "Tropical Smoothie Cafe", note: "Customer service, food prep, POS operations, and daily closing procedures." },
   { year: "2023 – 2025", role: "Shift Leader", company: "Guerriero Gelato", note: "Led shifts, managed team workflow, and maintained store operations." },
   { year: "2022 – 2025", role: "Emcee / Founding Organizer", company: "United Asian Voices Diwali Festival", note: "Co-created an annual Diwali Festival in West Orange, scripted events, and promoted local businesses." },
   { year: "2021 – 2023", role: "Camp Leader", company: "West Orange Summer Enrichment", note: "Taught music to young students and supervised aftercare programs." },

@@ -2,7 +2,7 @@
 
 My personal portfolio website — built with React, Tailwind CSS, and React Router, deployed on GitHub Pages.
 
-**Live site:** [ryans2025.github.io](https://ryans2025.github.io)
+**Live site:** [ryansinha.dev](https://ryansinha.dev)
 
 ## About
 
