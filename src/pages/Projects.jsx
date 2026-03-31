@@ -1,5 +1,6 @@
 import projects from "../data/projects";
 import { useState } from "react";
+import { AnimatePresence } from "framer-motion";
 import ProjectModal from "../components/ProjectModal";
 import StarField from "../components/StarField";
 
@@ -59,7 +60,9 @@ export default function Projects() {
             ))}
           </div>
 
-          <ProjectModal project={selected} onClose={() => setSelected(null)} />
+          <AnimatePresence>
+            {selected && <ProjectModal key={selected.slug} project={selected} onClose={() => setSelected(null)} />}
+          </AnimatePresence>
         </section>
       </div>
     </>

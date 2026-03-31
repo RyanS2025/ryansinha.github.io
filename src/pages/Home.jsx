@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { AnimatePresence } from "framer-motion";
 import projects from "../data/projects";
 import posts from "../data/posts";
 import ProjectModal from "../components/ProjectModal";
@@ -85,7 +86,9 @@ export default function Home() {
           <Link to="/blog" className="text-amber-400 hover:text-amber-300 transition-colors text-sm mt-4 inline-block">View all posts →</Link>
         </section>
 
-        <ProjectModal project={selected} onClose={() => setSelected(null)} />
+        <AnimatePresence>
+          {selected && <ProjectModal key={selected.slug} project={selected} onClose={() => setSelected(null)} />}
+        </AnimatePresence>
       </div>
     </>
   );
